@@ -47,7 +47,7 @@ def get_img_as_base64(file):
         data = f.read()
     return base64.b64encode(data).decode()
 
-img = get_img_as_base64('Icons\Paineira_layout_2.png')
+img = get_img_as_base64('Icons/Paineira_layout_2.png')
 
 # Constantes
 h = scipy.constants.physical_constants['Planck constant in eV/Hz'][0]
