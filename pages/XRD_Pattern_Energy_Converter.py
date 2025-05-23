@@ -4,6 +4,7 @@ import numpy as np
 import plotly.graph_objects as go
 import base64, scipy.constants
 from plotly.subplots import make_subplots
+from io import StringIO
 
 # Constantes físicas
 h = scipy.constants.physical_constants['Planck constant in eV/Hz'][0]
@@ -23,7 +24,7 @@ st.markdown(
 )
 
 # Seção "About" com fundo sólido
-with st.expander('How it works'):
+with st.expander('How it works', expanded=True):
     st.markdown(
     """
     This tool is designed to compare X-ray diffraction (XRD) patterns at different energy levels, allowing users to visualize how the diffraction pattern changes when the energy of the X-rays is modified. It also provides the ability to calculate the scattering vector (Q) for the data, which can be useful for further analysis of the crystal structure.
@@ -36,7 +37,7 @@ with st.expander('How it works'):
     - This tool is particularly useful for researchers who need to analyze how changes in X-ray energy affect the diffraction pattern, facilitating comparisons and insights into material properties.
 
     #### Important Note:
-    For the tool to recognize the dataset correctly, the angle column must be labeled "2theta (degree)" and the intensity column must be labeled "Intensity". Please ensure your data follows this format before uploading.
+    For the tool to recognize the dataset correctly, the file uploaded must have .txt or .csv extension. The tool will recognize the 2$\\theta$ values as the first column and the Intensity values as the second column. The columns can be seperated by either comma (',') or tab ('\\t'). Please ensure your data follows this format before uploading.
 
 
 
@@ -282,9 +283,16 @@ input_XRD = st.file_uploader('Upload the XRD pattern', type=['txt', 'csv'])
 if st.button('Convert and plot both graphs (2θ x Intensity and Scattering Vector x Intensity)'):
     if input_XRD is not None:
         try:
-            input_df = pd.read_csv(input_XRD, sep=',')
-            two_theta = input_df['2theta (degree)']
-            intensity = input_df['Intensity']
+            bytes_file = input_XRD.getvalue()
+            bytes_file = bytes_file.decode()
+
+            if "\t" in bytes_file:
+                input_df = pd.read_csv(input_XRD, sep='\t', comment="#")
+            else:
+                input_df = pd.read_csv(input_XRD, sep=',', comment="#")
+            #print(input_df)
+            two_theta = input_df.iloc[:, 0]
+            intensity = input_df.iloc[:, 1]
 
             new_2theta = calculate_new_2theta(two_theta, energy, new_energy)
             
@@ -302,7 +310,7 @@ if st.button('Convert and plot both graphs (2θ x Intensity and Scattering Vecto
 
 
         except Exception as e:
-            st.error(f'Error processing the file: {e}')
+            st.error(f'Error processing the file: {e}.')
     else:
         st.error('Please upload a valid XRD pattern file.')
 
