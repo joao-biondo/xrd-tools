@@ -246,8 +246,8 @@ if energy_or_wavelength == 'Energy (keV)':
         st.markdown(
             f"""
             <div style="background-color: #333; border: 2px solid rgb(255,75,75); border-radius: 8px; padding: 10px; margin-top: 10px; margin-bottom: 10px;">
-                <p style="color: white; margin: 0;"><strong>Original:</strong> Wavelength: {wavelength:.4f} Å, Energy: {energy:.2f} keV</p>
-                <p style="color: white; margin: 0;"><strong>New:</strong> Wavelength: {new_wavelength:.4f} Å, Energy: {new_energy:.2f} keV</p>
+                <p style="color: white; margin: 0;"><strong>Original:</strong> Wavelength: {wavelength:.5f} Å, Energy: {energy:.4f} keV</p>
+                <p style="color: white; margin: 0;"><strong>New:</strong> Wavelength: {new_wavelength:.5f} Å, Energy: {new_energy:.4f} keV</p>
             </div>
             """, unsafe_allow_html=True
         )
@@ -255,7 +255,7 @@ if energy_or_wavelength == 'Energy (keV)':
         st.markdown(
             f"""
             <div style="background-color: #333; border: 2px solid rgb(255,75,75); border-radius: 8px; padding: 10px; margin-top: 10px; margin-bottom: 10px;">
-                <p style="color: white; margin: 0;">Wavelength: {wavelength:.4f} Å, Energy: {energy:.2f} keV</p>
+                <p style="color: white; margin: 0;">Wavelength: {wavelength:.5f} Å, Energy: {energy:.4f} keV</p>
             </div>
             """, unsafe_allow_html=True
         )
