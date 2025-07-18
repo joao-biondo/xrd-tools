@@ -238,9 +238,9 @@ if "chart_generated" not in st.session_state:
 energy_or_wavelength = st.radio('Select the energy or wavelength of the Uploaded XRD pattern', ['Energy (keV)', 'Wavelength (Å)'])
 
 if energy_or_wavelength == 'Energy (keV)':
-    energy = st.number_input('Energy (keV)', min_value=1.0, max_value=30.0, value=25.5000, step=0.0001, format='%.2f')
+    energy = st.number_input('Energy (keV)', min_value=1.0, max_value=30.0, value=25.5000, step=0.0001, format='%.4f')
     wavelength = calculate_wavelength(energy)
-    new_energy = st.number_input('New Energy (keV)', min_value=1.0, max_value=30.0, value=None, step=0.0001, format='%.2f')
+    new_energy = st.number_input('New Energy (keV)', min_value=1.0, max_value=30.0, value=None, step=0.0001, format='%.4f')
     if new_energy:
         new_wavelength = calculate_wavelength(new_energy)
         st.markdown(
@@ -260,9 +260,9 @@ if energy_or_wavelength == 'Energy (keV)':
             """, unsafe_allow_html=True
         )
 else:
-    wavelength = st.number_input('Wavelength (Å)', min_value=0.1, max_value=3.0, value=0.4862, step=0.0001, format='%.4f')
+    wavelength = st.number_input('Wavelength (Å)', min_value=0.1, max_value=3.0, value=0.48621, step=0.00001, format='%.5f')
     energy = calculate_energy(wavelength)
-    new_wavelength = st.number_input('New Wavelength (Å)', min_value=0.1, max_value=3.0, value=None, step=0.0001, format='%.4f')
+    new_wavelength = st.number_input('New Wavelength (Å)', min_value=0.1, max_value=3.0, value=None, step=0.00001, format='%.5f')
     if new_wavelength:
         new_energy = calculate_energy(new_wavelength)
         st.markdown(
