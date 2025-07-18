@@ -268,8 +268,8 @@ else:
         st.markdown(
             f"""
             <div style="background-color: #333; border: 2px solid rgb(255,75,75); border-radius: 8px; padding: 10px; margin-top: 10px; margin-bottom: 10px;">
-                <p style="color: white; margin: 0;"><strong>Original:</strong> Wavelength: {wavelength:.4f} Å,  Energy: {energy:.2f} keV</p>
-                <p style="color: white; margin: 0;"><strong>New:</strong>  Wavelength: {new_wavelength:.4f} Å,  Energy: {new_energy:.2f} keV</p>
+                <p style="color: white; margin: 0;"><strong>Original:</strong> Wavelength: {wavelength:.5f} Å,  Energy: {energy:.4f} keV</p>
+                <p style="color: white; margin: 0;"><strong>New:</strong>  Wavelength: {new_wavelength:.5f} Å,  Energy: {new_energy:.4f} keV</p>
             </div>
             """, unsafe_allow_html=True
         )
@@ -277,7 +277,7 @@ else:
         st.markdown(
             f"""
             <div style="background-color: #333; border: 2px solid rgb(255,75,75); border-radius: 8px; padding: 10px; margin-top: 10px; margin-bottom: 10px;">
-                <p style="color: white; margin: 0;">Wavelength: {wavelength:.4f} Å, Energy: {energy:.2f} keV</p>
+                <p style="color: white; margin: 0;">Wavelength: {wavelength:.5f} Å, Energy: {energy:.4f} keV</p>
             </div>
             """, unsafe_allow_html=True
         )
@@ -333,13 +333,13 @@ if st.session_state.chart_generated:
             st.download_button(
                 label="Download New Diffractogram",
                 data=st.session_state.new_diffractogram,
-                file_name=f'New_Diffractogram_{new_energy:.2f}keV_{new_wavelength:.4f}Å.csv',
+                file_name=f'New_Diffractogram_{new_energy:.4f}keV_{new_wavelength:.5f}Å.csv',
                 mime='text/csv'
             )
         with col2:
             st.download_button(
                 label="Download Scattering Vector Data",
                 data=st.session_state.scattering_data,
-                file_name=f'Scattering_Vector_{new_energy:.2f}keV_{new_wavelength:.4f}Å.csv',
+                file_name=f'Scattering_Vector_{new_energy:.4f}keV_{new_wavelength:.5f}Å.csv',
                 mime='text/csv'
             )
