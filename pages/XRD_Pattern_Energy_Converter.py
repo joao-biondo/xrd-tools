@@ -102,9 +102,14 @@ h1, h2, h3, h4, h5, h6 {{
 }}
 
 /* Estilizando a seção About*/
-[data-testid="stExpander"],
+[data-testid="stExpander"] {{
+    background-color: #262730;
+    border-radius: 8px;
+    padding: 10px;
+}}
 [data-testid="stFileUploader"] {{
     background-color: #262730;
+    color: white;
     border-radius: 8px;
     padding: 10px;
 }}
@@ -144,6 +149,7 @@ div[data-testid="stDownloadButton"] > button {{
 div[data-testid="stDownloadButton"] > button:hover {{
     background-color: #45a049;
 }}
+
 </style>
 """
 st.markdown(page_bg_image, unsafe_allow_html=True)

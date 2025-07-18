@@ -7,12 +7,12 @@ import math, plotly
 from plotly.subplots import make_subplots
 import base64
 
-st.set_page_config(page_title="X-ray Attenuation Calculator", page_icon='Icons/Paineira-Logo.png', layout="wide")
+st.set_page_config(page_title="2θ, d-spacing and Q converter", page_icon='Icons/Paineira-Logo.png', layout="wide")
 st.logo('Icons/Paineira-Logo.png', link='https://lnls.cnpem.br/facilities/paineira-en/', icon_image='Icons/Paineira-Layout.png', size='large')
 st.markdown(
     """
     <div style="background-color: #FF4B4B; border-radius: 5px; padding: 2px; margin-bottom: 20px;">
-        <h1 style="color: Black; text-align: center;"> X-ray Attenuation Calculator</h1>
+        <h1 style="color: Black; text-align: center;"> 2θ, d-spacing and Q converter</h1>
     </div>
     """, unsafe_allow_html=True
 )
